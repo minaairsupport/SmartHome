@@ -1,4 +1,4 @@
-package com.massive.smarthome.ui
+package com.massive.smarthome.ui.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
