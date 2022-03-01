@@ -6,6 +6,7 @@ import android.os.Handler
 import android.os.Looper
 import com.massive.smarthome.databinding.SplashLayoutBinding
 import com.massive.smarthome.ui.base.BaseActivity
+import com.massive.smarthome.ui.component.home.HomeActivity
 
 class SplashActivity : BaseActivity() {
 
@@ -26,10 +27,9 @@ class SplashActivity : BaseActivity() {
 
     private fun navigateToHomePage() {
         Handler(Looper.getMainLooper()).postDelayed({
-
-//            val nextScreenIntent = Intent(this, LoginActivity::class.java)
-//            startActivity(nextScreenIntent)
-//            finish()
+            val nextScreenIntent = Intent(this, HomeActivity::class.java)
+            startActivity(nextScreenIntent)
+            finish()
         }, SPLASH_DELAY.toLong())
     }
 
