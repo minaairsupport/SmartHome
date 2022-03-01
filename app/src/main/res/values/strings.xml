@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">SmartHome</string>
+    <string name="home">Home</string>
+    <string name="profile_image_des">profile image</string>
+    <string name="device_name">Device Name</string>
+    <string name="off">OFF</string>
+    <string name="on">ON</string>
 </resources>
