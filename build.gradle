@@ -11,4 +11,7 @@ task clean(type: Delete) {
 
 ext{
     moshiVersion = '1.13.0'
+    retrofitVersion = '2.9.0'
+    okhttpInterceptorVersion = '4.9.0'
+    glid = '4.11.0'
 }
