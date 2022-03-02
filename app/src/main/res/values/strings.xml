@@ -5,4 +5,9 @@
     <string name="device_name">Device Name</string>
     <string name="off">OFF</string>
     <string name="on">ON</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="save">SAVE</string>
+    <string name="firstname">FirstName</string>
+    <string name="lastname">LastName</string>
+    <string name="address">Address</string>
 </resources>

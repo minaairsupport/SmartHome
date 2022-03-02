@@ -23,6 +23,7 @@ class SplashActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         navigateToHomePage()
+
     }
 
     private fun navigateToHomePage() {
