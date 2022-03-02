@@ -28,7 +28,7 @@
         android:contentDescription="@string/profile_image_des"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/ic_baseline_account_circle_24" />
+        app:srcCompat="@drawable/ic_baseline_account_circle_24"     />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="0dp"
