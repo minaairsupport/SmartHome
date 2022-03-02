@@ -47,4 +47,7 @@ dependencies {
     // moshi
     implementation "com.squareup.moshi:moshi:$moshiVersion"
 
+    //circle image
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
 }
