@@ -21,7 +21,9 @@
 
 
         <activity android:name=".ui.component.home.HomeActivity">
+        </activity>
 
+        <activity android:name=".ui.component.profile.ProfileActivity">
         </activity>
 
 
