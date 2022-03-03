@@ -10,7 +10,7 @@ import retrofit2.Response
 import java.io.IOException
 import javax.inject.Inject
 
-class RemoteRepository @Inject constructor(private val serviceGenerator: ServiceGenerator , private val networkConnectivity: NetworkConnectivity): RemoteDataSource {
+class RemoteRepository @Inject constructor(private val serviceGenerator: ServiceGenerator , private val networkConnectivity: NetworkConnectivity): RemoteRepositorySource {
 
     override suspend fun requestDevices(): Resource<List<Device>> {
         val devicesService = serviceGenerator.createService(RecipesService::class.java)

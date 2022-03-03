@@ -1,5 +1,7 @@
 package com.massive.smarthome.ui.base
 
-abstract class BaseViewModel {
+import androidx.lifecycle.ViewModel
+
+abstract class BaseViewModel  : ViewModel(){
 
 }

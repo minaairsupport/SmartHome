@@ -16,4 +16,6 @@ ext{
     glid = '4.13.1'
     hilt_viewmodels = '1.0.0-alpha03'
     hilt_version= '2.41'
+    livedata_ktx = '2.4.1'
+    espressoVersion = '3.3.0'
 }
