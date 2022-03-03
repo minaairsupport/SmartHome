@@ -1,6 +1,7 @@
 package com.massive.smarthome.data.remote
 
 import com.massive.smarthome.data.Resource
+import com.massive.smarthome.data.dto.JsonResponse
 import com.massive.smarthome.data.dto.device.Device
 import com.massive.smarthome.data.error.NETWORK_ERROR
 import com.massive.smarthome.data.error.NO_INTERNET_CONNECTION
@@ -15,8 +16,8 @@ class RemoteRepository @Inject constructor(private val serviceGenerator: Service
     override suspend fun requestDevices(): Resource<List<Device>> {
         val devicesService = serviceGenerator.createService(DevicesService::class.java)
         return when(val response = processCall(devicesService::fetchDevices)){
-            is List<*> -> {
-                Resource.Success(data = response as ArrayList<Device>)
+            is JsonResponse -> {
+                Resource.Success(data = response.devices as ArrayList<Device>)
             }
             else -> {
                 Resource.DataError(errorCode = response as Int)
