@@ -1,10 +1,14 @@
 package com.massive.smarthome.data.remote
 
 import com.massive.smarthome.BuildConfig
+import com.massive.smarthome.data.remote.moshiFactories.MyKotlinJsonAdapterFactory
+import com.massive.smarthome.data.remote.moshiFactories.MyStandardJsonAdapters
+import com.squareup.moshi.Moshi
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -51,12 +55,20 @@ class ServiceGenerator @Inject constructor(){
 
           retrofit = Retrofit.Builder()
                         .baseUrl(baseUrl)
+                        .addConverterFactory(MoshiConverterFactory.create(getMoshi()))
                         .client(client)
                         .build()
     }
 
     fun <S> createService (serviceClass: Class<S>) : S {
         return retrofit.create(serviceClass)
+    }
+
+    private fun getMoshi(): Moshi {
+        return Moshi.Builder()
+            .add(MyKotlinJsonAdapterFactory())
+            .add(MyStandardJsonAdapters.FACTORY)
+            .build()
     }
 
 
