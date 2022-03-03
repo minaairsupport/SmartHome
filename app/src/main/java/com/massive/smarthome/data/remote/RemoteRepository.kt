@@ -17,6 +17,7 @@ class RemoteRepository @Inject constructor(private val serviceGenerator: Service
         val devicesService = serviceGenerator.createService(DevicesService::class.java)
         return when(val response = processCall(devicesService::fetchDevices)){
             is JsonResponse -> {
+                // store data in room database
                 Resource.Success(data = response.devices as ArrayList<Device>)
             }
             else -> {

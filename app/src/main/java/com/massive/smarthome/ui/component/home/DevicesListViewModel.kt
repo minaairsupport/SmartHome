@@ -7,6 +7,7 @@ import com.massive.smarthome.data.DataRepositorySource
 import com.massive.smarthome.data.Resource
 import com.massive.smarthome.data.dto.device.Device
 import com.massive.smarthome.ui.base.BaseViewModel
+import com.massive.smarthome.utils.SingleEvent
 import com.massive.smarthome.utils.wrapEspressoIdlingResource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
@@ -21,6 +22,9 @@ class DevicesListViewModel @Inject constructor(private val dataRepositoryReposit
     private val devicesLiveDataPrivate = MutableLiveData<Resource<List<Device>>>()
     val devicesLiveData: LiveData<Resource<List<Device>>> get() = devicesLiveDataPrivate
 
+    private val showToastPrivate = MutableLiveData<SingleEvent<Any>>()
+    val showToast: LiveData<SingleEvent<Any>> get() = showToastPrivate
+
     fun getDevices(){
         viewModelScope.launch {
                     devicesLiveDataPrivate.value = Resource.Loading()
@@ -30,5 +34,10 @@ class DevicesListViewModel @Inject constructor(private val dataRepositoryReposit
                         }
                     }
         }
+    }
+
+    fun showToastMessage(errorCode: Int) {
+        val error = errorManager.getError(errorCode)
+        showToastPrivate.value = SingleEvent(error.description)
     }
 }
