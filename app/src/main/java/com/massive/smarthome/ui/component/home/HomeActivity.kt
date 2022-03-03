@@ -1,6 +1,7 @@
 package com.massive.smarthome.ui.component.home
 
 import android.content.Intent
+import android.opengl.Visibility
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import com.massive.smarthome.data.Resource
@@ -10,6 +11,7 @@ import com.massive.smarthome.databinding.HomeLayoutBinding
 import com.massive.smarthome.ui.base.BaseActivity
 import com.massive.smarthome.ui.component.profile.ProfileActivity
 import com.massive.smarthome.utils.observe
+import com.massive.smarthome.utils.toVisible
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -39,13 +41,19 @@ class HomeActivity : BaseActivity() {
         val profileScreenIntent = Intent(this, ProfileActivity::class.java)
         startActivity(profileScreenIntent)
     }
-}
-
     fun handleDevicesList(resource: Resource<List<Device>>) {
         when(resource){
-            is Resource.Loading -> {}// show loading
-            is Resource.Success -> {}// show loading
+            is Resource.Loading -> showLoadingView()
+            is Resource.Success ->
             is Resource.DataError -> {}// show loading
         }
 
     }
+
+    private fun showLoadingView() {
+        binding.pbLoading.toVisible()
+
+    }
+}
+
+
