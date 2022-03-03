@@ -6,6 +6,8 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
+import javax.inject.Singleton
 
 private const val timeoutRead = 3000   //In milliseconds
 private const val contentType = "Content-Type"
@@ -13,7 +15,8 @@ private const val contentTypeValue = "application/json"
 private const val timeoutConnect = 3000   //In milliseconds
 private const val baseUrl = "http://storage42.com/modulotest/"
 
-class ServiceGenerator {
+@Singleton
+class ServiceGenerator @Inject constructor(){
 
     private val okHttpBuilder: OkHttpClient.Builder = OkHttpClient.Builder()
     private val retrofit: Retrofit

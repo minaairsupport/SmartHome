@@ -14,17 +14,17 @@ import com.massive.smarthome.ui.base.BaseActivity
 import com.massive.smarthome.ui.component.profile.ProfileActivity
 import com.massive.smarthome.utils.*
 import dagger.hilt.android.AndroidEntryPoint
+import androidx.activity.viewModels
 
 @AndroidEntryPoint
 class HomeActivity : BaseActivity() {
 
     private lateinit var binding: HomeLayoutBinding
-    private lateinit var devicesListViewModel: DevicesListViewModel
+    private val devicesListViewModel: DevicesListViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        devicesListViewModel = ViewModelProvider(this).get(DevicesListViewModel::class.java)
         binding.ivProfile.setOnClickListener{ navigateToProfilePage() }
     }
 
