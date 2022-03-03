@@ -11,10 +11,11 @@ import com.massive.smarthome.utils.wrapEspressoIdlingResource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 
 @HiltViewModel
-class DevicesListViewModel(private val dataRepositoryRepository: DataRepositorySource) : BaseViewModel() {
+class DevicesListViewModel @Inject constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseViewModel() {
 
     // data exposed as  LiveData but locally as MutableLiveData
     private val devicesLiveDataPrivate = MutableLiveData<Resource<List<Device>>>()

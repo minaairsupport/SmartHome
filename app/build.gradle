@@ -3,7 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'kotlin-platform-android'
-
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -39,7 +39,6 @@ android {
 }
 
 dependencies {
-
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.5.0'
@@ -71,11 +70,15 @@ dependencies {
 
     // Hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"
-    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hilt_viewmodels"
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
     androidTestImplementation "com.google.dagger:hilt-android-testing:2.41"
     kaptAndroidTest "com.google.dagger:hilt-android-compiler:$hilt_version"
 
     implementation "androidx.test.espresso:espresso-idling-resource:$espressoVersion"
 
+}
+
+// Allow references to generated code
+kapt {
+    correctErrorTypes = true
 }
