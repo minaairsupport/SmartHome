@@ -4,7 +4,7 @@ import com.massive.smarthome.data.dto.device.Device
 import retrofit2.Response
 import retrofit2.http.GET
 
-interface RecipesService {
+interface DevicesService {
     @GET("data.json")
     suspend fun fetchDevices(): Response<List<Device>>
 }

@@ -26,6 +26,7 @@ class HomeActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.ivProfile.setOnClickListener{ navigateToProfilePage() }
+        devicesListViewModel.getDevices()
     }
 
     override fun observeViewModel() {
