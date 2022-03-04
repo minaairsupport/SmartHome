@@ -1,5 +1,6 @@
 package com.massive.smarthome.data.dto
 
+import com.massive.smarthome.data.dto.device.Device
 import com.squareup.moshi.Json
 
 data class JsonResponse(
@@ -11,29 +12,20 @@ data class JsonResponse(
 	val user: User? = null
 )
 
-data class DevicesItem(
+ class DevicesItem() : Device(){
 
 	@Json(name="mode")
-	val mode: String? = null,
+	val mode: String? = null
 
 	@Json(name="temperature")
-	val temperature: Int? = null,
-
-	@Json(name="id")
-	val id: Int? = null,
-
-	@Json(name="deviceName")
-	val deviceName: String? = null,
-
-	@Json(name="productType")
-	val productType: String? = null,
+	val temperature: Int? = null
 
 	@Json(name="position")
-	val position: Int? = null,
+	val position: Int? = null
 
 	@Json(name="intensity")
 	val intensity: Int? = null
-)
+}
 
 data class Address(
 
