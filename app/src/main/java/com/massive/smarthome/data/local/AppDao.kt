@@ -29,13 +29,13 @@ interface AppDao {
 
     //Insertion
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAllDevices(devices: List<DevicesItem>)
+    fun insertAllDevices(devices: List<DevicesItem>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertUser(user : User)
+    fun insertUser(user : User)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAddress(address : Address)
+    fun insertAddress(address : Address)
 
     // Delete
     @Query("DELETE FROM device")

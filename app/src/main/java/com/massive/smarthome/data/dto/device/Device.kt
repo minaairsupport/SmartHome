@@ -5,6 +5,6 @@ import android.os.Parcelable
 
 
 sealed class Device : Parcelable {
-    abstract val id: Int
-    abstract val deviceName: String
+    abstract var id: Int
+    abstract var deviceName: String
 }

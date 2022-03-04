@@ -4,6 +4,6 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class RollerDevice(override val id: Int,
-                        override val deviceName: String,
+data class RollerDevice(override var id: Int,
+                        override var deviceName: String,
                         val position: Int) : Device(), Parcelable

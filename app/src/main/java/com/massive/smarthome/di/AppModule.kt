@@ -14,7 +14,6 @@ import kotlinx.coroutines.Dispatchers
 import javax.inject.Singleton
 import kotlin.coroutines.CoroutineContext
 
-
 @Module
 @InstallIn(SingletonComponent::class)
 class AppModule {
@@ -33,15 +32,10 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideAppDataBase(@ApplicationContext context: Context): AppDataBase {
-        return AppDataBase.getDatabase(context)
-    }
+    fun provideDataBase(@ApplicationContext context: Context) = AppDataBase.getDatabase(context)
 
     @Provides
     @Singleton
-    fun provideAppDao( appDataBase: AppDataBase): AppDao {
-        return appDataBase.appDao()
-    }
-
+    fun provideAppDao( appDataBase: AppDataBase): AppDao = appDataBase.appDao()
 
 }

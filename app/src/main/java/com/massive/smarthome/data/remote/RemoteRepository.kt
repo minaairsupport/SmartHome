@@ -1,5 +1,6 @@
 package com.massive.smarthome.data.remote
 
+import androidx.lifecycle.viewModelScope
 import com.massive.smarthome.data.Resource
 import com.massive.smarthome.data.dto.ApiResponse
 import com.massive.smarthome.data.dto.DevicesItem
@@ -9,6 +10,7 @@ import com.massive.smarthome.data.error.NO_INTERNET_CONNECTION
 import com.massive.smarthome.data.local.AppDao
 import com.massive.smarthome.data.remote.service.DevicesService
 import com.massive.smarthome.utils.NetworkConnectivitySource
+import kotlinx.coroutines.launch
 import retrofit2.Response
 import java.io.IOException
 import javax.inject.Inject
@@ -61,6 +63,7 @@ class RemoteRepository @Inject constructor(private val serviceGenerator: Service
 
 
     private suspend fun storeDataInDb(apiResponse: ApiResponse){
+
         apiResponse.devices?.let { appDao.insertAllDevices(it as List<DevicesItem>) }
         apiResponse.user?.let { appDao.insertUser(it) }
         apiResponse.user?.address?.let { appDao.insertAddress(it) }
