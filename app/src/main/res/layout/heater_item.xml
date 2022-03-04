@@ -45,6 +45,8 @@
             android:layout_marginBottom="16dp"
             android:max="28"
             android:min="7"
+            android:progressTint="@android:color/holo_red_dark"
+            android:thumbTint="@color/header_bg"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
