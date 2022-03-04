@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.massive.smarthome.data.DataRepositorySource
 import com.massive.smarthome.data.Resource
+import com.massive.smarthome.data.dto.DevicesItem
 import com.massive.smarthome.data.dto.device.Device
 import com.massive.smarthome.ui.base.BaseViewModel
 import com.massive.smarthome.utils.SingleEvent
@@ -19,8 +20,8 @@ import javax.inject.Inject
 class DevicesListViewModel @Inject constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseViewModel() {
 
     // data exposed as  LiveData but locally as MutableLiveData
-    private val devicesLiveDataPrivate = MutableLiveData<Resource<List<Device>>>()
-    val devicesLiveData: LiveData<Resource<List<Device>>> get() = devicesLiveDataPrivate
+    private val devicesLiveDataPrivate = MutableLiveData<Resource<List<DevicesItem>>>()
+    val devicesLiveData: LiveData<Resource<List<DevicesItem>>> get() = devicesLiveDataPrivate
 
     private val showToastPrivate = MutableLiveData<SingleEvent<Any>>()
     val showToast: LiveData<SingleEvent<Any>> get() = showToastPrivate

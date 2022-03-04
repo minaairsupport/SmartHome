@@ -6,5 +6,5 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class LightDevice(override val id: Int,
 					   override val deviceName: String,
-					   val intensity: String,
+					   val intensity: Int,
 					   val mode: String) : Device(), Parcelable

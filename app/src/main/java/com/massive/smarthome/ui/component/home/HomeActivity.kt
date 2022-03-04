@@ -1,11 +1,9 @@
 package com.massive.smarthome.ui.component.home
 
 import android.content.Intent
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
 import com.massive.smarthome.data.Resource
 import com.massive.smarthome.data.dto.device.Device
@@ -16,6 +14,7 @@ import com.massive.smarthome.ui.component.profile.ProfileActivity
 import com.massive.smarthome.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.activity.viewModels
+import com.massive.smarthome.data.dto.DevicesItem
 import com.massive.smarthome.ui.component.home.adapter.DevicesListAdapter
 
 @AndroidEntryPoint
@@ -47,7 +46,7 @@ class HomeActivity : BaseActivity() {
         val profileScreenIntent = Intent(this, ProfileActivity::class.java)
         startActivity(profileScreenIntent)
     }
-    fun handleDevicesList(resource: Resource<List<Device>>) {
+    fun handleDevicesList(resource: Resource<List<DevicesItem>>) {
         when (resource) {
             is Resource.Loading -> showLoadingView()
             is Resource.Success -> {resource.data?.let { bindListData(devices = it) }}
@@ -61,9 +60,9 @@ class HomeActivity : BaseActivity() {
         }
     }
 
-    private fun bindListData(devices: List<Device>) {
+    private fun bindListData(devices: List<DevicesItem>) {
         if (!(devices.isNullOrEmpty())) {
-            devicesAdapter = DevicesListAdapter(devicesListViewModel, devices)
+            devicesAdapter = DevicesListAdapter(devicesListViewModel, convertResponse(devices))
             binding.rvDevicesList.adapter = devicesAdapter
             showDataView(true)
         } else {
