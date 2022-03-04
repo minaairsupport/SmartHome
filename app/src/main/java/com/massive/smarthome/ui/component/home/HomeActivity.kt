@@ -14,6 +14,8 @@ import com.massive.smarthome.ui.component.profile.ProfileActivity
 import com.massive.smarthome.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.activity.viewModels
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.massive.smarthome.data.dto.DevicesItem
 import com.massive.smarthome.ui.component.home.adapter.DevicesListAdapter
 
@@ -27,6 +29,7 @@ class HomeActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding.rvDevicesList.addItemDecoration(DividerItemDecoration(this , LinearLayoutManager.VERTICAL))
         binding.ivProfile.setOnClickListener{ navigateToProfilePage() }
         devicesListViewModel.getDevices()
     }

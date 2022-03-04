@@ -48,16 +48,16 @@ class DevicesListAdapter(private val viewModel: DevicesListViewModel, private va
 
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-       val viewType =  holder.itemViewType
-        when(viewType){
-            LIGHT.ordinal -> {
-                (holder as LightViewHolder).bind(devices[position] as LightDevice , onItemClickListener)
+
+        when(holder){
+            is LightViewHolder -> {
+                holder.bind(devices[position] as LightDevice , onItemClickListener)
             }
-            HEATER.ordinal ->  {
-                (holder as HeaterViewHolder).bind(devices[position] as HeaterDevice, onItemClickListener)
+            is HeaterViewHolder ->  {
+                holder.bind(devices[position] as HeaterDevice, onItemClickListener)
             }
-            ROLLER.ordinal ->  {
-                (holder as RollerViewHolder).bind(devices[position] as RollerDevice , onItemClickListener)
+            is RollerViewHolder ->  {
+                holder.bind(devices[position] as RollerDevice , onItemClickListener)
             }
         }
 
@@ -65,5 +65,13 @@ class DevicesListAdapter(private val viewModel: DevicesListViewModel, private va
 
     override fun getItemCount(): Int {
         return devices.size
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return when (devices[position]){
+            is LightDevice -> LIGHT.ordinal
+            is HeaterDevice -> HEATER.ordinal
+            is RollerDevice -> ROLLER.ordinal
+        }
     }
 }
