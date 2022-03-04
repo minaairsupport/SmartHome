@@ -1,6 +1,8 @@
 package com.massive.smarthome.di
 
 import android.content.Context
+import com.massive.smarthome.data.local.AppDao
+import com.massive.smarthome.data.local.AppDataBase
 import com.massive.smarthome.utils.NetworkConnectivity
 import com.massive.smarthome.utils.NetworkConnectivitySource
 import dagger.Module
@@ -28,4 +30,18 @@ class AppModule {
     fun provideCoroutineContext(): CoroutineContext {
         return Dispatchers.IO
     }
+
+    @Provides
+    @Singleton
+    fun provideAppDataBase(@ApplicationContext context: Context): AppDataBase {
+        return AppDataBase.getDatabase(context)
+    }
+
+    @Provides
+    @Singleton
+    fun provideAppDao( appDataBase: AppDataBase): AppDao {
+        return appDataBase.appDao()
+    }
+
+
 }

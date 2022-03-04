@@ -1,9 +1,10 @@
 package com.massive.smarthome.data.dto
 
+import androidx.room.Entity
 import com.massive.smarthome.data.dto.device.Device
 import com.squareup.moshi.Json
 
-data class JsonResponse(
+data class ApiResponse(
 
 	@Json(name="devices")
 	val devices: List<DevicesItem?>? = null,
@@ -12,7 +13,17 @@ data class JsonResponse(
 	val user: User? = null
 )
 
- class DevicesItem() : Device(){
+@Entity(tableName = "device")
+ class DevicesItem(){
+
+	@Json(name="id")
+	val id: Int? = null
+
+	@Json(name="deviceName")
+	val deviceName: String? = null
+
+	@Json(name="productType")
+	val productType: String? = null
 
 	@Json(name="mode")
 	val mode: String? = null
@@ -27,6 +38,7 @@ data class JsonResponse(
 	val intensity: Int? = null
 }
 
+@Entity(tableName = "address")
 data class Address(
 
 	@Json(name="country")
@@ -45,6 +57,7 @@ data class Address(
 	val streetCode: String? = null
 )
 
+@Entity(tableName = "user")
 data class User(
 
 	@Json(name="firstName")

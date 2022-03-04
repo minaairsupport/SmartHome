@@ -4,8 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.massive.smarthome.data.dto.Address
+import com.massive.smarthome.data.dto.DevicesItem
+import com.massive.smarthome.data.dto.User
 
-@Database(entities = [] , version = 1 , exportSchema = false)
+@Database(entities = [DevicesItem::class ,User::class , Address::class] , version = 1 , exportSchema = false)
 abstract class AppDataBase : RoomDatabase() {
 
     abstract fun appDao(): AppDao
