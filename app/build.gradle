@@ -83,6 +83,10 @@ dependencies {
 
     implementation "androidx.activity:activity-ktx:$activityKtxVersion"
 
+    // room database
+    implementation "androidx.room:room-runtime:$roomVersion"
+    annotationProcessor "androidx.room:room-compiler:$roomVersion"
+
 }
 
 // Allow references to generated code
