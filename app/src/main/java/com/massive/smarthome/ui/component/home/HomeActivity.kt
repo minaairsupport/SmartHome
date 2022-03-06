@@ -7,7 +7,6 @@ import android.widget.ArrayAdapter
 import androidx.lifecycle.LiveData
 import com.google.android.material.snackbar.Snackbar
 import com.massive.smarthome.data.Resource
-import com.massive.smarthome.data.dto.device.Device
 
 import com.massive.smarthome.databinding.HomeLayoutBinding
 import com.massive.smarthome.ui.base.BaseActivity
@@ -15,7 +14,6 @@ import com.massive.smarthome.ui.component.profile.ProfileActivity
 import com.massive.smarthome.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.activity.viewModels
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
