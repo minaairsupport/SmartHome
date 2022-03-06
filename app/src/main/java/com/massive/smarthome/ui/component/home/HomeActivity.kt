@@ -3,6 +3,7 @@ package com.massive.smarthome.ui.component.home
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.ArrayAdapter
 import androidx.lifecycle.LiveData
 import com.google.android.material.snackbar.Snackbar
 import com.massive.smarthome.data.Resource
@@ -14,6 +15,7 @@ import com.massive.smarthome.ui.component.profile.ProfileActivity
 import com.massive.smarthome.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.activity.viewModels
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -36,6 +38,13 @@ class HomeActivity : BaseActivity() {
         binding.rvDevicesList.addItemDecoration(decorator)
         binding.ivProfile.setOnClickListener{ navigateToProfilePage() }
         devicesListViewModel.getDevices()
+        val types = resources.getStringArray(R.array.device_types)
+        val arrayAdapter = ArrayAdapter(this , R.layout.dropdown_item , types )
+        binding.acDeviceType.setAdapter( arrayAdapter)
+        binding.acDeviceType.setOnItemClickListener { parent, view, position, id ->
+            val selectedItem = parent.getItemAtPosition(position).toString()
+            devicesAdapter.filterByType(selectedItem)
+        }
     }
 
     override fun observeViewModel() {
@@ -53,10 +62,10 @@ class HomeActivity : BaseActivity() {
         val profileScreenIntent = Intent(this, ProfileActivity::class.java)
         startActivity(profileScreenIntent)
     }
-    fun handleDevicesList(resource: Resource<List<DevicesItem>>) {
+    private fun handleDevicesList(resource: Resource<List<DevicesItem>>) {
         when (resource) {
             is Resource.Loading -> showLoadingView()
-            is Resource.Success -> {resource.data?.let { bindListData(devices = it) }}
+            is Resource.Success -> resource.data?.let { bindListData(devices = it) }
             is Resource.DataError -> {
                 showDataView(false)
                 resource.errorCode?.let {

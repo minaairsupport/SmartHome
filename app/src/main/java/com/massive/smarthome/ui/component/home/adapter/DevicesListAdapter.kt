@@ -15,10 +15,15 @@ import com.massive.smarthome.ui.component.home.DevicesListViewModel
 import com.massive.smarthome.ui.component.home.viewholders.HeaterViewHolder
 import com.massive.smarthome.ui.component.home.viewholders.LightViewHolder
 import com.massive.smarthome.ui.component.home.viewholders.RollerViewHolder
+import com.massive.smarthome.utils.ALL_TYPE
 import com.massive.smarthome.utils.DevicesTypes.*
+import com.massive.smarthome.utils.HEATER_TYPE
+import com.massive.smarthome.utils.LIGHT_TYPE
+import com.massive.smarthome.utils.ROLLER_TYPE
 
-class DevicesListAdapter(private val viewModel: DevicesListViewModel, private val devices: List<Device>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class DevicesListAdapter(private val viewModel: DevicesListViewModel, private val devices: ArrayList<Device>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
+    private var filteredDevices :ArrayList<Device> =  ArrayList(devices)
     private val onItemClickListener: RecyclerItemListener<Device> = object : RecyclerItemListener<Device> {
         override fun onItemSelected(item: Device) {
             // TODO handle item click
@@ -51,24 +56,39 @@ class DevicesListAdapter(private val viewModel: DevicesListViewModel, private va
 
         when(holder){
             is LightViewHolder -> {
-                holder.bind(devices[position] as LightDevice , onItemClickListener)
+                holder.bind(filteredDevices[position] as LightDevice , onItemClickListener)
             }
             is HeaterViewHolder ->  {
-                holder.bind(devices[position] as HeaterDevice, onItemClickListener)
+                holder.bind(filteredDevices[position] as HeaterDevice, onItemClickListener)
             }
             is RollerViewHolder ->  {
-                holder.bind(devices[position] as RollerDevice , onItemClickListener)
+                holder.bind(filteredDevices[position] as RollerDevice , onItemClickListener)
             }
         }
 
     }
 
     override fun getItemCount(): Int {
-        return devices.size
+        return filteredDevices.size
+    }
+
+    fun filterByType(deviceType: String){
+        filteredDevices.clear()
+
+        when(deviceType){
+            LIGHT_TYPE -> filteredDevices.addAll(devices.filterIsInstance(LightDevice::class.java))
+            ROLLER_TYPE -> filteredDevices.addAll(devices.filterIsInstance(RollerDevice::class.java))
+            HEATER_TYPE -> filteredDevices.addAll(devices.filterIsInstance(HeaterDevice::class.java))
+            ALL_TYPE -> filteredDevices.addAll(devices)
+
+        }
+
+        notifyDataSetChanged()
+
     }
 
     override fun getItemViewType(position: Int): Int {
-        return when (devices[position]){
+        return when (filteredDevices[position]){
             is LightDevice -> LIGHT.ordinal
             is HeaterDevice -> HEATER.ordinal
             is RollerDevice -> ROLLER.ordinal

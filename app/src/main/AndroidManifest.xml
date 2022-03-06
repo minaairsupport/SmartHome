@@ -20,14 +20,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.component.home.HomeActivity"></activity>
-        <activity android:name=".ui.component.profile.ProfileActivity"></activity>
-        <meta-data
-            android:name="com.google.android.actions"
-            android:resource="@xml/recycler_view_divider" />
+        <activity android:name=".ui.component.home.HomeActivity" />
+        <activity android:name=".ui.component.profile.ProfileActivity" />
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

@@ -7,3 +7,4 @@ enum class DevicesTypes {
 const val LIGHT_TYPE: String = "Light"
 const val ROLLER_TYPE: String = "RollerShutter"
 const val HEATER_TYPE: String = "Heater"
+const val ALL_TYPE:String = "All"

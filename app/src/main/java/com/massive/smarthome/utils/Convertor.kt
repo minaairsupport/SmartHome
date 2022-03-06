@@ -9,7 +9,7 @@ import com.massive.smarthome.data.dto.device.RollerDevice
 import java.text.SimpleDateFormat
 
 
-fun convertResponse(devicesApi: List<DevicesItem>): List<Device> {
+fun convertResponse(devicesApi: List<DevicesItem>): ArrayList<Device> {
     return devicesApi.map {
         when (it.productType) {
             LIGHT_TYPE -> LightDevice(
@@ -33,7 +33,7 @@ fun convertResponse(devicesApi: List<DevicesItem>): List<Device> {
             )
             else -> throw Exception()
         }
-    }
+    } as ArrayList<Device>
 }
 
 @TypeConverter
