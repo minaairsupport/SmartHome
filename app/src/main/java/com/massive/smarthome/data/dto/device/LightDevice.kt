@@ -1,13 +1,10 @@
 package com.massive.smarthome.data.dto.device
 
-import com.squareup.moshi.Json
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
-class LightDevice(): Device(){
-
-	@Json(name="intensity")
-	val intensity: Int? = null
-
-	@Json(name="mode")
-	val mode: String? = null
-
-}
+@Parcelize
+data class LightDevice(override var id: Int,
+					   override var deviceName: String,
+					   val intensity: Int,
+					   val mode: String) : Device(), Parcelable

@@ -1,3 +1,16 @@
+
+buildscript {
+    ext.hilt_version ='2.41'
+    ext.kotlin_version ='1.6.10'
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
+    }
+}
+
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
     id 'com.android.application' version '7.1.2' apply false
@@ -11,4 +24,14 @@ task clean(type: Delete) {
 
 ext{
     moshiVersion = '1.13.0'
+    retrofitVersion = '2.9.0'
+    okhttpInterceptorVersion = '5.0.0-alpha.5'
+    glid = '4.13.1'
+    hilt_viewmodels = '1.0.0-alpha03'
+    livedata_ktx = '2.4.1'
+    espressoVersion = '3.3.0'
+    activityKtxVersion= '1.4.0'
+    annotationVersion ='1.1.0'
+    roomVersion = "2.4.2"
+
 }

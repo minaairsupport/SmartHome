@@ -1,9 +1,9 @@
 package com.massive.smarthome.data.dto.device
 
-import com.squareup.moshi.Json
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
-class RollerDevice(): Device() {
-
-    @Json(name="position")
-    val position: Int? = null
-}
+@Parcelize
+data class RollerDevice(override var id: Int,
+                        override var deviceName: String,
+                        val position: Int) : Device(), Parcelable
