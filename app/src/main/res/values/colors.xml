@@ -22,4 +22,9 @@
 
     <color name="home_bg"> #F5F5F5</color>
 
+    <!--    card colors-->
+
+    <color name="light_bg">#FED8B1</color>
+    <color name="heater_bg"> #F04900</color>
+    <color name="roller_bg"> #8CFFDB</color>
 </resources>

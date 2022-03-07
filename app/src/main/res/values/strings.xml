@@ -15,6 +15,8 @@
     <string name="no_internet">Please check your internet connection</string>
     <string name="network_error">Network error, could get data, please try again!</string>
     <string name="device_type">Device Type</string>
+    <string name="delete">Delete</string>
+    <string name="update">Update</string>
 
     <string-array name="device_types">
         <item>All</item>

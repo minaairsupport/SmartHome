@@ -2,6 +2,7 @@ package com.massive.smarthome.data
 
 import com.massive.smarthome.data.dto.DevicesItem
 import com.massive.smarthome.data.dto.device.Device
+import com.massive.smarthome.data.local.AppDao
 import com.massive.smarthome.data.remote.RemoteRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

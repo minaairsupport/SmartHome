@@ -4,23 +4,25 @@
     android:id="@+id/rl_light_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
+    app:cardBackgroundColor="@color/light_bg"
     app:cardCornerRadius="20dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:src="@drawable/ic_lamp"
-            android:alpha="0.1"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/sbIntensity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/tvDeviceName" />
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvDeviceName"
             android:layout_width="wrap_content"
@@ -39,25 +41,13 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
+            android:clickable="false"
             android:thumb="@drawable/custom_thumb"
-            app:track="@drawable/custom_track"
             app:layout_constraintBottom_toTopOf="@+id/sbIntensity"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tvDeviceName"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatSeekBar
-            android:id="@+id/sbIntensity"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="32dp"
-            android:progressTint="@android:color/holo_red_dark"
-            android:thumbTint="@color/header_bg"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvDeviceName" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:track="@drawable/custom_track" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

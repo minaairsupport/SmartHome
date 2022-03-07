@@ -10,7 +10,7 @@ class RollerViewHolder(private val itemBinding: RollerItemBinding) : RecyclerVie
 
     fun bind(deviceItem: RollerDevice, recyclerItemListener: RecyclerItemListener<Device>) {
         itemBinding.tvDeviceName.text = deviceItem.deviceName
-        itemBinding.sbPosition.progress = deviceItem.position ?: 0
+        itemBinding.tvPosition.text = "Position ${deviceItem.position}"
         itemBinding.rlRollerItem.setOnClickListener { recyclerItemListener.onItemSelected(deviceItem) }
     }
 }
