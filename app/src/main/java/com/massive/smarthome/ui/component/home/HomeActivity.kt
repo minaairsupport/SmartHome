@@ -19,10 +19,13 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.massive.smarthome.R
 import com.massive.smarthome.data.dto.DevicesItem
+import com.massive.smarthome.data.dto.device.Device
+import com.massive.smarthome.ui.base.listeners.RecyclerItemListener
+import com.massive.smarthome.ui.component.detailsDevice.DetailsActivity
 import com.massive.smarthome.ui.component.home.adapter.DevicesListAdapter
 
 @AndroidEntryPoint
-class HomeActivity : BaseActivity() {
+class HomeActivity : BaseActivity() , RecyclerItemListener<Device> {
 
     private lateinit var binding: HomeLayoutBinding
     private val devicesListViewModel: DevicesListViewModel by viewModels()
@@ -76,7 +79,7 @@ class HomeActivity : BaseActivity() {
 
     private fun bindListData(devices: List<DevicesItem>) {
         if (!(devices.isNullOrEmpty())) {
-            devicesAdapter = DevicesListAdapter(devicesListViewModel, convertResponse(devices))
+            devicesAdapter = DevicesListAdapter(devicesListViewModel, convertResponse(devices) , this)
             binding.rvDevicesList.adapter = devicesAdapter
             showDataView(true)
         } else {
@@ -103,6 +106,12 @@ class HomeActivity : BaseActivity() {
 
     private fun observeToast(event: LiveData<SingleEvent<Any>>) {
         binding.root.showToast(this, event, Snackbar.LENGTH_LONG)
+    }
+
+    override fun onItemSelected(item: Device) {
+        val detailScreenIntent = Intent(this, DetailsActivity::class.java)
+        detailScreenIntent.putExtra(DeviceKey , item)
+        startActivity(detailScreenIntent)
     }
 }
 

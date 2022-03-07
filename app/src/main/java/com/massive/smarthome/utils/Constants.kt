@@ -12,3 +12,5 @@ const val ALL_TYPE:String = "All"
 
 const val ON: String = "ON"
 const val OFF: String = "OFF"
+
+const val DeviceKey = "DeviceKey"

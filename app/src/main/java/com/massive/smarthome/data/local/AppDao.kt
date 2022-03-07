@@ -52,4 +52,10 @@ interface AppDao {
 
     @Query("DELETE FROM address")
     fun deleteAddress()
+
+    @Update
+    fun updateUser(user: User?): Int
+
+    @Update
+    fun updateDevice(devic: DevicesItem?): Int
 }

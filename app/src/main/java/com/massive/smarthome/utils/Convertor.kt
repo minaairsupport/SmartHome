@@ -36,6 +36,32 @@ fun convertResponse(devicesApi: List<DevicesItem>): ArrayList<Device> {
     } as ArrayList<Device>
 }
 
+    fun lightDeviceToDeviceItem(device: LightDevice): DevicesItem {
+        var devicesItem = DevicesItem()
+         devicesItem.deviceName = device.deviceName
+         devicesItem.id = device.id
+         devicesItem.intensity = device.intensity
+         devicesItem.mode = device.mode
+         return devicesItem
+    }
+
+    fun heaterDeviceToDeviceItem(device: HeaterDevice): DevicesItem{
+        var devicesItem = DevicesItem()
+        devicesItem.deviceName = device.deviceName
+        devicesItem.id = device.id
+        devicesItem.temperature = device.temperature
+        devicesItem.mode = device.mode
+        return devicesItem
+    }
+
+    fun rollerDeviceToDeviceItem(device: RollerDevice): DevicesItem{
+        var devicesItem = DevicesItem()
+        devicesItem.deviceName = device.deviceName
+        devicesItem.id = device.id
+        devicesItem.position = device.position
+        return devicesItem
+    }
+
 @TypeConverter
 fun convertLongToDate(dataLong: Long?): String {
     val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy")

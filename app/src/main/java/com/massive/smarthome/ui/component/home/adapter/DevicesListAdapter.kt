@@ -1,7 +1,9 @@
 package com.massive.smarthome.ui.component.home.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.massive.smarthome.data.dto.device.Device
 import com.massive.smarthome.data.dto.device.HeaterDevice
@@ -15,20 +17,16 @@ import com.massive.smarthome.ui.component.home.DevicesListViewModel
 import com.massive.smarthome.ui.component.home.viewholders.HeaterViewHolder
 import com.massive.smarthome.ui.component.home.viewholders.LightViewHolder
 import com.massive.smarthome.ui.component.home.viewholders.RollerViewHolder
+import com.massive.smarthome.ui.component.profile.ProfileActivity
 import com.massive.smarthome.utils.ALL_TYPE
 import com.massive.smarthome.utils.DevicesTypes.*
 import com.massive.smarthome.utils.HEATER_TYPE
 import com.massive.smarthome.utils.LIGHT_TYPE
 import com.massive.smarthome.utils.ROLLER_TYPE
 
-class DevicesListAdapter(private val viewModel: DevicesListViewModel, private val devices: ArrayList<Device>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class DevicesListAdapter(private val viewModel: DevicesListViewModel, private val devices: ArrayList<Device>, private val onItemClickListener: RecyclerItemListener<Device>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var filteredDevices :ArrayList<Device> =  ArrayList(devices)
-    private val onItemClickListener: RecyclerItemListener<Device> = object : RecyclerItemListener<Device> {
-        override fun onItemSelected(item: Device) {
-            // TODO handle item click
-        }
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         var myViewHolder: RecyclerView.ViewHolder? = null
