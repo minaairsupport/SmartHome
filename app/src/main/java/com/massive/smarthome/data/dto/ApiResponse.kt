@@ -15,30 +15,30 @@ data class ApiResponse(
 )
 
 @Entity(tableName = "device")
- class DevicesItem(){
+ class DevicesItem(
 
 	@PrimaryKey
 	@Json(name="id")
-	var id: Int? = null
+	var id: Int,
 
 	@Json(name="deviceName")
-	var deviceName: String? = null
+	var deviceName: String,
 
 	@Json(name="productType")
-	var productType: String? = null
+	var productType: String? = null,
 
 	@Json(name="mode")
-	var mode: String? = null
+	var mode: String? = null,
 
 	@Json(name="temperature")
-	var temperature: Int? = null
+	var temperature: Int? = null,
 
 	@Json(name="position")
-	var position: Int? = null
+	var position: Int? = null,
 
 	@Json(name="intensity")
-	var intensity: Int? = null
-}
+	var intensity: Int? = null,
+	)
 
 @Entity(tableName = "address")
 data class Address(

@@ -2,6 +2,7 @@ package com.massive.smarthome.ui.component.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.asFlow
 import androidx.lifecycle.viewModelScope
 import com.massive.smarthome.data.DataRepositorySource
 import com.massive.smarthome.data.Resource
@@ -28,12 +29,9 @@ class DevicesListViewModel @Inject constructor(private val dataRepositoryReposit
 
     fun getDevices(){
         viewModelScope.launch {
-                    devicesLiveDataPrivate.value = Resource.Loading()
-                    wrapEspressoIdlingResource {
-                        dataRepositoryRepository.requestDevices().collect{
-                            devicesLiveDataPrivate.value= it
-                        }
-                    }
+            dataRepositoryRepository.requestDevices().asFlow().collect{
+                devicesLiveDataPrivate.value = it
+            }
         }
     }
 

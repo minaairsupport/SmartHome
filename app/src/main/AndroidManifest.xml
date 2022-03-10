@@ -15,13 +15,14 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".ui.component.home.HomeActivity" />
         <activity android:name=".ui.component.profile.ProfileActivity" />
+        <activity
+            android:name=".ui.component.detailsDevice.DetailsActivity"
+            android:theme="@style/Theme.SmartHome"/>
     </application>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
