@@ -40,7 +40,8 @@ class HeaterDetailsFragment : Fragment() {
         binding.tvDeviceName.text = device.deviceName
         binding.sbTemp.progress = device.temperature
         binding.swMode.isChecked = device.mode == ON
-
+        binding.tvHeaterValue.text = device.temperature.toString()
+        
         binding.sbTemp.setOnSeekBarChangeListener(object :
             SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seek: SeekBar,

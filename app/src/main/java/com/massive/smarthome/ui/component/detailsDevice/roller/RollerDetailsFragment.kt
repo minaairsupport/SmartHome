@@ -54,6 +54,8 @@ class RollerDetailsFragment : Fragment() {
 
             }
         })
+
+        binding.tvRollerValue.text = device.position.toString()
         binding.tvDeviceName.text = device.deviceName
         binding.sbPosition.progress = device.position
         binding.btDelete.setOnClickListener{
