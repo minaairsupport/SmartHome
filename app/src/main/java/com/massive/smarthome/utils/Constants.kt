@@ -14,3 +14,5 @@ const val ON: String = "ON"
 const val OFF: String = "OFF"
 
 const val DeviceKey = "DeviceKey"
+
+const val DATABASE_VERSION = 3

@@ -72,7 +72,6 @@ class DevicesListAdapter(private val viewModel: DevicesListViewModel, private va
 
     fun filterByType(deviceType: String){
         filteredDevices.clear()
-
         when(deviceType){
             LIGHT_TYPE -> filteredDevices.addAll(devices.filterIsInstance(LightDevice::class.java))
             ROLLER_TYPE -> filteredDevices.addAll(devices.filterIsInstance(RollerDevice::class.java))

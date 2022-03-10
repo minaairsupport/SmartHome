@@ -15,6 +15,7 @@ import com.massive.smarthome.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.massive.smarthome.R
@@ -23,6 +24,7 @@ import com.massive.smarthome.data.dto.device.Device
 import com.massive.smarthome.ui.base.listeners.RecyclerItemListener
 import com.massive.smarthome.ui.component.detailsDevice.DetailsActivity
 import com.massive.smarthome.ui.component.home.adapter.DevicesListAdapter
+import kotlinx.coroutines.*
 
 @AndroidEntryPoint
 class HomeActivity : BaseActivity() , RecyclerItemListener<Device> {
@@ -39,12 +41,17 @@ class HomeActivity : BaseActivity() , RecyclerItemListener<Device> {
         binding.rvDevicesList.addItemDecoration(decorator)
         binding.ivProfile.setOnClickListener{ navigateToProfilePage() }
         devicesListViewModel.getDevices()
+    }
+
+    override fun onResume() {
+        super.onResume()
         val types = resources.getStringArray(R.array.device_types)
         val arrayAdapter = ArrayAdapter(this , R.layout.dropdown_item , types )
         binding.acDeviceType.setAdapter( arrayAdapter)
         binding.acDeviceType.setOnItemClickListener { parent, view, position, id ->
             val selectedItem = parent.getItemAtPosition(position).toString()
-            devicesAdapter.filterByType(selectedItem)
+            if(this::devicesAdapter.isInitialized)
+            devicesAdapter?.filterByType(selectedItem)
         }
     }
 

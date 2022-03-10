@@ -37,28 +37,25 @@ fun convertResponse(devicesApi: List<DevicesItem>): ArrayList<Device> {
 }
 
     fun lightDeviceToDeviceItem(device: LightDevice): DevicesItem {
-        var devicesItem = DevicesItem()
-         devicesItem.deviceName = device.deviceName
-         devicesItem.id = device.id
+        var devicesItem = DevicesItem(id = device.id, deviceName = device.deviceName)
          devicesItem.intensity = device.intensity
          devicesItem.mode = device.mode
+        devicesItem.productType = LIGHT_TYPE
          return devicesItem
     }
 
     fun heaterDeviceToDeviceItem(device: HeaterDevice): DevicesItem{
-        var devicesItem = DevicesItem()
-        devicesItem.deviceName = device.deviceName
-        devicesItem.id = device.id
+        var devicesItem = DevicesItem(id = device.id, deviceName = device.deviceName)
         devicesItem.temperature = device.temperature
         devicesItem.mode = device.mode
+        devicesItem.productType = HEATER_TYPE
         return devicesItem
     }
 
     fun rollerDeviceToDeviceItem(device: RollerDevice): DevicesItem{
-        var devicesItem = DevicesItem()
-        devicesItem.deviceName = device.deviceName
-        devicesItem.id = device.id
+        var devicesItem = DevicesItem(id = device.id, deviceName = device.deviceName)
         devicesItem.position = device.position
+        devicesItem.productType = ROLLER_TYPE
         return devicesItem
     }
 

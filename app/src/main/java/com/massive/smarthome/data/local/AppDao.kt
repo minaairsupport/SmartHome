@@ -17,8 +17,8 @@ interface AppDao {
     @Query("SELECT * FROM device ORDER BY productType ASC")
     fun getAllDevicesOrderedByType(): LiveData<List<DevicesItem>>
 
-    @Query("SELECT * FROM device ORDER BY id ASC")
-    fun getAllDevicesOrderedById(): LiveData<List<DevicesItem>>
+    @Query("SELECT * FROM device")
+    fun getAllDevices(): LiveData<List<DevicesItem>>
 
     @Query("SELECT * FROM user")
     fun getUser(): LiveData<User>
@@ -29,7 +29,7 @@ interface AppDao {
 
     //Insertion
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAllDevices(devices: List<DevicesItem>)
+    fun insertAllDevices(devices: List<DevicesItem>): List<Long>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertUser(user : User)
