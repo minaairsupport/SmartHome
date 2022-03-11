@@ -57,5 +57,9 @@ interface AppDao {
     fun updateUser(user: User?): Int
 
     @Update
+    fun updateAddress(address: Address): Int
+
+
+    @Update
     fun updateDevice(devic: DevicesItem?): Int
 }

@@ -64,3 +64,9 @@ fun convertLongToDate(dataLong: Long?): String {
     val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy")
     return simpleDateFormat.format(dataLong)
 }
+
+@TypeConverter
+fun convertDateToLong(date: String?): Long {
+    val df = SimpleDateFormat("dd/MM/yyyy")
+    return df.parse(date).time
+}

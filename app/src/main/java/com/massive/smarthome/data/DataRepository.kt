@@ -1,8 +1,10 @@
 package com.massive.smarthome.data
 
 import androidx.lifecycle.LiveData
+import com.massive.smarthome.data.dto.Address
 import com.massive.smarthome.data.dto.ApiResponse
 import com.massive.smarthome.data.dto.DevicesItem
+import com.massive.smarthome.data.dto.User
 import com.massive.smarthome.data.dto.device.HeaterDevice
 import com.massive.smarthome.data.dto.device.LightDevice
 import com.massive.smarthome.data.dto.device.RollerDevice
@@ -49,17 +51,33 @@ class DataRepository @Inject constructor(private val remoteRepository: RemoteRep
         appDao.updateDevice(rollerDeviceToDeviceItem(device))
     }
 
-     fun storeDataInDb(response: ApiResponse){
+    fun storeDataInDb(response: ApiResponse){
         response.devices?.let {
             val ids =    appDao.insertAllDevices(it as List<DevicesItem>)
         }
         response.user?.let { appDao.insertUser(it) }
-        response.user?.address?.let { appDao.insertAddress(it) }
+        response.user?.address?.let {
+            appDao.insertAddress(it)
+        }
     }
 
     private fun getDataLocally(): LiveData<Resource<List<DevicesItem>>> =  performLocalOperation( databaseQuery = {appDao.getAllDevices()})
 
+    override fun getCurrentUser(): LiveData<User> {
+        return appDao.getUser()
+    }
 
+    override fun getAddress(): LiveData<Address> {
+     return appDao.getAddress()
+    }
+
+    override fun updateCurrentUser(user: User): Int {
+        return appDao.updateUser(user)
+    }
+
+    override fun updateAddress(address: Address): Int {
+        return appDao.updateAddress(address)
+    }
 
 
 }
